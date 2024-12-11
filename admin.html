@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Acceso y Cálculo de Decants</title>
+</head>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.container {
+  background-color: white;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.title {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+label {
+  font-size: 14px;
+  color: #555;
+}
+
+input, select {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+input:focus, select:focus {
+  outline: none;
+  border-color: #6c63ff;
+  box-shadow: 0 0 5px rgba(108, 99, 255, 0.5);
+}
+
+button {
+  padding: 10px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button:hover {
+  background-color: #6c63ff;
+  color: white;
+}
+
+.result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.result h2 {
+  color: #333;
+}
+
+.result p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+</style>
+<body>
+    <div class="container">
+        <div id="loginForm">
+          <h1 class="title">Iniciar sesión</h1>
+          <div class="form">
+            <label for="username">Nombre:</label>
+            <input type="text" id="username" placeholder="Ingresa tu nombre" required>
+    
+            <label for="pin">PIN:</label>
+            <input type="password" id="pin" placeholder="Ingresa tu PIN" required>
+    
+            <button id="loginButton">Ingresar</button>
+          </div>
+        </div>
+    
+        <div id="calcForm" style="display: none;">
+          <h1 class="title">Calculadora de Decants de Perfume</h1>
+    
+          <div class="form">
+            <label for="price">Precio del Perfume (MXN):</label>
+            <input type="number" id="price" placeholder="Precio del perfume" required>
+    
+            <label for="milliliters">Cantidad de Mililitros:</label>
+            <input type="number" id="milliliters" placeholder="Mililitros del perfume" required>
+    
+            <label for="margin">Selecciona el margen de ganancia:</label>
+            <select id="margin">
+              <option value="0.10">10%</option>
+              <option value="0.20">20%</option>
+              <option value="0.30">30%</option>
+              <option value="0.40" selected>40%</option>
+              <option value="0.50">50%</option>
+              <option value="0.50">60%</option>
+              <option value="0.60">70%</option>
+              <option value="0.90">80%</option>
+              <option value="0.90">90%</option>
+              <option value="1.00">100%</option>
+            </select>
+    
+            <label for="decant">Precio del Decant (Fijo: 4 pesos):</label>
+            <input type="number" id="decantPrice" value="4" disabled>
+    
+            <div class="result">
+              <h2>Precio por Decant de 5ml:</h2>
+              <p id="pricePerDecant">0</p>
+              <h2>Total de Decants de 5ml:</h2>
+              <p id="totalDecants">0</p>
+              <h2>Ganancia Total con Decants:</h2>
+              <p id="totalProfit">0</p>
+            </div>
+    
+            <button id="calculateButton">Calcular</button>
+            <button id="backButton" onclick="window.location.href='index.html'">Regresar</button>
+          </div>
+        </div>
+      </div>
+
+  <script>
+ // Login verification
+document.getElementById('loginButton').addEventListener('click', function() {
+  const username = document.getElementById('username').value;
+  const pin = document.getElementById('pin').value;
+
+  if (username === 'ryxzer' && pin === '0101') {
+    // Si el usuario y PIN son correctos, mostrar el formulario de cálculo
+    document.getElementById('loginForm').style.display = 'none';
+    document.getElementById('calcForm').style.display = 'block';
+  } else {
+    alert('Usuario o PIN incorrecto. Intenta de nuevo.');
+  }
+});
+
+// Cálculo de decants
+document.getElementById('calculateButton').addEventListener('click', function() {
+  const price = parseFloat(document.getElementById('price').value);
+  const milliliters = parseFloat(document.getElementById('milliliters').value); // Mililitros del perfume
+  const decantPrice = 4; // Precio fijo del frasquito
+  const margin = parseFloat(document.getElementById('margin').value); // Obtener el margen de ganancia seleccionado
+
+  if (isNaN(price) || price <= 0 || isNaN(milliliters) || milliliters <= 0) {
+    alert('Por favor, ingresa valores válidos para el precio y los mililitros.');
+    return;
+  }
+
+  // Calcular cuántos decants de 5 ml se pueden sacar del perfume
+  const totalDecants = Math.floor(milliliters / 5); // Cuántos decants de 5 ml puedes sacar
+  const pricePerMl = price / milliliters; // Precio por mililitro
+  const priceFor5Ml = pricePerMl * 5; // Precio para 5 ml
+  const priceWithMargin = priceFor5Ml * (1 + margin); // Precio con ganancia
+
+  // Calcular el precio por decant de 5 ml
+  const pricePerDecant = priceWithMargin + decantPrice;
+
+  // Calcular la ganancia total
+  const totalProfit = totalDecants * priceWithMargin;
+
+  // Mostrar los resultados
+  document.getElementById('pricePerDecant').textContent = `$${pricePerDecant.toFixed(2)}`;
+  document.getElementById('totalDecants').textContent = totalDecants;
+  document.getElementById('totalProfit').textContent = `$${totalProfit.toFixed(2)}`;
+});
+
+  </script>
+</body>
+</html>
