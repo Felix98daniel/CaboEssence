@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CaboEssence</title>
+    <link rel="icon" href="CaboEssence2.icos" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="fade-out">
+        <img src="CaboEssence2.png" alt="Imagen de transición">
+        <center>
+            <p class="puto">Descubre tu fragancia perfecta en cada gota<br>Decants de calidad, ¡a tu alcance!</p>
+        </center>
+        <style>
+            .puto {
+                font-size: 20px;
+                font-family: cursive;
+            }
+        </style>
+    </div>
+    <header id="inicio">
+        <img src="CaboEssence2.png" alt="Logo">
+    </header>
+    <button class="menu-toggle" onclick="toggleMenu()">☰ Menú</button>
+    <div id="cart"></div>
+
+
+    <nav id="sidebar">
+        <a href="#inicio">Inicio</a>
+        <a href="admin.html">Administrador</a>
+        <a href="#" id="terms-link">Términos y Condiciones</a>
+        <div id="terms" class="terms hidden">
+          <h2>Términos y Condiciones</h2>
+          <ul>
+              <li><strong>Edad mínima:</strong> 18 años.</li>
+              <li><strong>Uso:</strong> Solo para adultos.</li>
+              <li><strong>Precios:</strong> Sujetos a cambio según disponibilidad y exclusividad.</li>
+              <li><strong>Entrega:</strong> Entrega en persona al momento de la compra.</li>
+              <li><strong>Devoluciones:</strong> No se aceptan devoluciones por productos ya utilizados.</li>
+              <li><strong>Privacidad:</strong> Protegemos tu información personal con total confidencialidad.</li>
+          </ul>
+      </div>
+      
+
+
+    </nav>
+    <div class="main" id="main-content">
+        <div class="carousel">
+            <img src="a1.png" class="active" alt="Imagen 1">
+            <img src="a2.png" alt="Imagen 2">
+            <img src="a3.png" alt="Imagen 3">
+        </div>
+        <br><br><br>
+        <div class="magnets">
+            <div class="magnet"
+                style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTniU0BBbL8Rxwypm07IJjqwUHNDfFwtC_xkw&s');">
+            </div>
+            <div class="magnet"
+                style="background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTGo3ccSkISNlq_5QXqNnEBTFFZbqVZIKuxeQ&s');"></div>
+            <div class="magnet"
+                style="background-image: url('https://brandemia.org/sites/default/files/sites/default/files/monograma_paco_rabanne-antes.jpg');">
+            </div>
+        </div>
+
+        <div class="products-section">
+            <h2>Nuevos</h2>
+            <div class="products">
+
+                <body>
+                  <div class="container">
+                    <div class="product">
+                        <img src="https://static.wixstatic.com/media/bf72d0_ee4569e32a4549d6b045341e455a49fa~mv2.png/v1/fit/w_500,h_500,q_90/file.png" alt="Azzaro Wanted by Night" onclick="showOptions('overlayAzzaroWantedByNight')">
+                        <h3>Azzaro Wanted by Night</h3>
+                        <p>$ 160.00 MXN</p>
+                    </div>
+                </div>
+                
+                <div class="overlay hidden" id="overlayAzzaroWantedByNight" onclick="hideOptions('overlayAzzaroWantedByNight')">
+                    <div class="overlay-content">
+                        <h1>Detalles del Perfume</h1>
+                        <div class="section">
+                            <h2>Notas:</h2>
+                            <ul class="centered-list">
+                                <li>Canela</li>
+                                <li>Tabaco</li>
+                                <li>Ciprés</li>
+                                <li>Limón</li>
+                                <li>Lavanda</li>
+                            </ul>
+                        </div>
+                        <div class="section">
+                            <h2>Temporada recomendada:</h2>
+                            <p>Otoño e Invierno</p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+                <!-- Otro producto -->
+                <div class="container">
+                  <div class="product">
+                      <img src="https://www.scenthaven.com.au/wp-content/uploads/2021/06/armaf-club-de-nuit-intense-man-eau-de-toilette-105ml_optimized.png" alt="Club de Nuit Intense" onclick="showOptions('overlayClubDeNuitIntense')">
+                      <h3>Club de Nuit Intense</h3>
+                      <p>$ 89.00 MXN</p>
+                  </div>
+              </div>
+              
+              <div class="overlay hidden" id="overlayClubDeNuitIntense" onclick="hideOptions('overlayClubDeNuitIntense')">
+                  <div class="overlay-content">
+                      <h1>Detalles del Perfume</h1>
+                      <div class="section">
+                          <h2>Notas:</h2>
+                          <ul class="centered-list">
+                              <li>Cítricos</li>
+                              <li>Rosa</li>
+                              <li>Jazmín</li>
+                              <li>Madera de Cedro</li>
+                              <li>Vainilla</li>
+                          </ul>
+                      </div>
+                      <div class="section">
+                          <h2>Temporada recomendada:</h2>
+                          <p>Otoño e Invierno</p>
+                      </div>
+                  </div>
+              </div>
+              
+                
+                
+
+            </div>
+        </div>
+        
+                
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
