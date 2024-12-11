@@ -1,0 +1,550 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #000000;
+    /* Fondo inicial negro */
+    overflow: hidden;
+    /* Evita la barra de desplazamiento */
+}
+
+.fade-out {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 1);
+    /* Fondo inicial completamente negro */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeOut 9s ease forwards;
+    /* Animación de desvanecimiento de 6 segundos */
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+        visibility: hidden;
+        /* Oculta el elemento al final de la animación */
+    }
+}
+
+.fade-out img {
+    max-width: 50%;
+    height: auto;
+}
+
+.fade-out p {
+    color: white;
+    font-size: 20px;
+}
+
+/* Estilos originales */
+header {
+    background-color: #000000;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    /* Ajustar la altura del encabezado para que sea igual a la altura de la imagen */
+    height: 170px;
+    /* 150px (altura de la imagen) + 10px de margen superior y 10px de margen inferior */
+}
+
+header img {
+    max-width: 100%;
+    height: 150px;
+    /* Ajusta la altura de la imagen del encabezado */
+    margin: 10px auto;
+}
+
+
+h2 {
+    font-family: cursive;
+    color: white;
+    display: inline-block;
+    animation-name: neon;
+    animation-duration: 1.5s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    text-shadow: 0 0 5px #4564a8, 0 0 10px #2b5a9b, 0 0 15px #2761b2, 0 0 20px #2677d2, 0 0 25px #1f479fa5, 0 0 30px #0b466a;
+}
+
+@keyframes neon {
+    from {
+        color: #fff;
+    }
+
+    to {
+        color: #ffffff6a;
+        /* Mantengo el último color */
+    }
+}
+
+/* Estilo del borde */
+h2::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(to right, #4564a8, #7a7a7a, #0b466a);
+    animation: neon-border 1.5s infinite alternate;
+}
+
+@keyframes neon-border {
+    from {
+        background-position: 0 0;
+    }
+
+    to {
+        background-position: 100% 0;
+    }
+}
+
+.menu-toggle {
+position: fixed;
+top: 20px;
+left: 20px;
+background-color: transparent;
+color: white;
+border: none;
+padding: 10px;
+cursor: pointer;
+z-index: 1000;
+font-size: 25px;
+font-family: cursive;
+}
+
+.second-button {
+position: fixed;
+top: 20px;
+right: 20px; /* Coloca el botón en el lado derecho */
+background-color: transparent;
+color: white;
+border: none;
+padding: 10px;
+cursor: pointer;
+z-index: 1000;
+font-size: 25px;
+font-family: cursive;
+}
+
+
+nav {
+    position: fixed;
+    top: 60px;
+    left: 20px;
+    width: 120px;
+    background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.2));
+    /* degradado para el fondo */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    transition: transform 0.3s ease;
+    display: none;
+}
+
+nav h2 {
+    width: 200px;
+}
+
+nav a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 8px 12px;
+    text-align: center;
+    border: 2px solid transparent;
+    border-radius: 5px;
+    margin: 4px 0;
+    transition: border-color 0.3s ease, color 0.3s ease;
+}
+
+nav ul {
+    width: 200px;
+
+}
+
+nav li {
+    width: 200px;
+}
+
+nav a:hover {
+    background-color: #362a5e7f;
+    border-color: #ffffff;
+    color: #c8e8d7;
+}
+
+.main {
+    padding: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    /* Ajustar automáticamente la altura para mantener la proporción */
+    object-fit: contain;
+    /* Muestra la imagen completa */
+    display: none;
+}
+
+.carousel img.active {
+    display: block;
+}
+
+
+.products-section {
+    text-align: center;
+    margin: 40px 0;
+}
+
+body::-webkit-scrollbar {
+    width: 0;
+    /* Ancho de la barra de desplazamiento vertical */
+    background: transparent;
+    /* Fondo transparente */
+}
+
+.products {
+    display: flex;
+    overflow-x: auto;
+    /* Habilitar desplazamiento horizontal */
+    gap: 20px;
+    /* Espacio entre los productos */
+    padding: 10px;
+    /* Espacio interno */
+    justify-content: flex-start;
+    /* Alinear los productos al inicio */
+    flex-wrap: nowrap;
+    /* Evitar el retorno a la línea siguiente */
+}
+
+.products::-webkit-scrollbar {
+    width: 0;
+    /* Ancho de la barra de desplazamiento */
+    background: transparent;
+    /* Fondo transparente */
+}
+
+.products::-webkit-scrollbar-thumb {
+    background: transparent;
+    /* Fondo del pulgar transparente */
+}
+
+.product {
+    background-color: #000000;
+    border: 1px solid #ffffff;
+    border-radius: 50px;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    width: 300px;
+    /* Establecer un ancho fijo para los productos */
+    flex-shrink: 0;
+    /* Evitar que los productos se reduzcan en tamaño */
+    /* Establecer duración y tipo de la animación */
+    transition: border-color 0.3s ease;
+}
+
+.product:hover {
+    /* Cambiar el color del borde al hacer hover */
+    border-color: #08c4f8;
+    /* Puedes ajustar el color como desees */
+    /* Agregar un efecto de tic tac con animación */
+    animation: tic-tac 1s infinite alternate;
+    /* Hacer un zoom al 105% del tamaño original */
+    transform: scale(1.05);
+}
+
+@keyframes tic-tac {
+    0% {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    }
+
+    100% {
+        box-shadow: 0 0 10px rgba(54, 136, 150, 0.768);
+    }
+}
+
+
+h3 {
+    color: white;
+}
+
+p {
+    color: white;
+}
+
+.product img {
+    max-width: 100%;
+    height: auto;
+}
+
+.magnets {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    /* Ajusta el margen superior según sea necesario */
+}
+
+.magnet {
+    width: 100px;
+    /* Ajusta el tamaño del imán */
+    height: 100px;
+    /* Ajusta el tamaño del imán */
+    border-radius: 50%;
+    /* Hace que el imán sea circular */
+    background-size: cover;
+    /* Ajusta el tamaño de la imagen de fondo */
+    position: relative;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.7), 0 0 40px rgba(0, 255, 255, 0.234), 0 0 60px rgba(0, 255, 255, 0.131);
+    border: 3px solid rgba(0, 255, 255, 0.8);
+    transition: box-shadow 0.3s ease, border 0.3s ease;
+}
+
+.magnet:hover {
+    box-shadow: 0 0 30px rgba(0, 255, 255, 1), 0 0 50px rgba(0, 255, 255, 0.464), 0 0 70px rgba(0, 255, 255, 0.226);
+    border: 3px solid rgba(0, 255, 255, 1);
+}
+
+.magnet:hover::after {
+    content: "";
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0.7);
+    }
+
+    70% {
+        box-shadow: 0 0 0 10px rgba(0, 255, 255, 0);
+    }
+
+    100% {
+        box-shadow: 0 0 0 0 rgba(0, 255, 255, 0);
+    }
+}
+
+
+.hidden {
+    display: none;
+}
+
+.terms {
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 250px;
+}
+
+li {
+    color: white;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    /* Fondo negro transparente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    /* Asegura que el overlay esté sobre todo */
+}
+
+.overlay-content {
+    text-align: center;
+    color: white;
+}
+
+.hidden {
+    display: none;
+    /* Inicialmente ocultar el overlay */
+}
+
+button {
+    position: relative;
+    font-size: 1.2em;
+    padding: 0.7em 1.4em;
+    background-color: #BF0426;
+    text-decoration: none;
+    border: none;
+    border-radius: 0.5em;
+    color: #DEDEDE;
+    box-shadow: 0.5em 0.5em 0.5em rgba(0, 0, 0, 0.3);
+}
+
+button::before {
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0) 0%, rgba(33, 33, 33, 1) 50%, rgba(0, 0, 0, 0) 50%, rgba(191, 4, 38, 1) 60%);
+    border-radius: 0 0 0.5em 0;
+    box-shadow: 0.2em 0.2em 0.2em rgba(0, 0, 0, 0.3);
+    transition: 0.3s;
+}
+
+button:hover::before {
+    width: 1.6em;
+    height: 1.6em;
+}
+
+button:active {
+    box-shadow: 0.2em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+    transform: translate(0.1em, 0.1em);
+}
+.centered-list {
+    text-align: center;
+}
+
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.overlay-content {
+    background-color: #121212;
+    padding: 20px;
+    border-radius: 30px;
+    color: white;
+    font-family: cursive;
+}
+
+.hidden {
+    display: none;
+}
+
+.page-content {
+    flex: 1;
+}
+
+.announcement-bar {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: #007f5f;
+    color: #a0df29;
+    text-align: center;
+    padding: 10px 0;
+    border-radius: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.announcement-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.announcement-text {
+    display: flex;
+    animation: scroll 15s linear infinite;
+}
+
+@keyframes scroll {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+.announcement-title {
+    font-size: 18px;
+    white-space: nowrap;
+    margin-right: 20px;
+}
+
+.announcement-button {
+    background-color: #a0df29;
+    color: #007f5f;
+    font-size: 14px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.announcement-button:hover {
+    background-color: #80b918;
+    color: white;
+}
+
+.close-button {
+    font-size: 18px;
+    cursor: pointer;
+    padding: 0 10px;
+    color: #80b918;
+}
+
+.footer {
+    background-color: #000000;
+    text-align: center;
+    padding: 40px 0;
+    width: 100%;
+    color: #7c7c7c;
+    flex-shrink: 0;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.footer a {
+    color: #007f5f;
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
