@@ -1,0 +1,31 @@
+            <div class="redes-sociales mt-8">
+                <a href="#" class="facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+                <a href="#" class="instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="tiktok"><i class="fab fa-tiktok"></i></a>
+            </div>
+            
+/* Estilo de los íconos */
+.redes-sociales a {
+    width: 60px; /* Tamaño adecuado para los íconos */
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%; /* Hace que los íconos sean círculos */
+    color: white;
+    font-size: 1.8rem; /* Tamaño adecuado del ícono */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Elimina el subrayado de los enlaces */
+}
+
+/* Efecto hover para resaltar */
+.redes-sociales a:hover {
+    transform: scale(1.2); /* Efecto de aumento al pasar el ratón */
+}
+
+/* Colores de cada red */
+.facebook { background-color: #1877f2; } /* Fondo azul de Facebook */
+.whatsapp { background-color: #25d366; } /* Fondo verde de WhatsApp */
+.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); } /* Fondo degradado para Instagram */
+.tiktok { background-color: #000; } /* Fondo negro de TikTok */
